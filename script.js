@@ -21,7 +21,24 @@ console.log(subtract(2, 2));
 console.log(multiply(2, 2));
 console.log(divide(2, 2));
 
-
+// Declare variables for operation
 let firstNumber = " ";
 let operator = " ";
 let secondNumber = " ";
+
+// Create function to operate
+function operate (firstNumber, operator, secondNumber) {
+    switch (operator) {
+        case "+":
+        return add(a, b);
+
+        case "-":
+        return subtract (a, b);
+
+        case "*":
+        return multiply (a, b);
+
+        case "/":
+        return divide (a, b);
+    }
+}
