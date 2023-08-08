@@ -1,16 +1,17 @@
 // Access elements with DOM
-const C = document.querySelector("#C");
-const nine = document.querySelector("#9");
-const eight = document.querySelector("#8");
-const seven = document.querySelector("#7");
-const six = document.querySelector("#6");
-const five = document.querySelector("#5");
-const four = document.querySelector("#4");
-const three = document.querySelector("#3");
-const two = document.querySelector("#2");
-const one = document.querySelector("#1");
-const zero = document.querySelector("#0");
-const hash = document.querySelector("#.");
+const C = document.getElementById("C");
+const nine = document.getElementById("nine");
+const eight = document.getElementById("eight");
+const seven = document.getElementById("seven");
+const six = document.getElementById("six");
+const five = document.getElementById("five");
+const four = document.getElementById("four");
+const three = document.getElementById("three");
+const two = document.getElementById("two");
+const one = document.getElementById("one");
+const zero = document.getElementById("zero");
+const hash = document.getElementById("hash");
+const dot = document.getElementById("dot");
 
 // Functions for basic math operators
 
@@ -30,9 +31,13 @@ function multiply (a, b) {
 function divide (a, b) {
     return a / b;
 }
-function displayValue() {
-
+console.log(C);
+if (C) {
+C.addEventListener("click", function() {
+    input.textContent = "C";
+    });
 }
+
 console.log(add(2, 2));
 console.log(subtract(2, 2));
 console.log(multiply(2, 2));
