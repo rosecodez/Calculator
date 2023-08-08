@@ -31,12 +31,45 @@ function multiply (a, b) {
 function divide (a, b) {
     return a / b;
 }
-console.log(C);
-if (C) {
+
+
 C.addEventListener("click", function() {
-    input.textContent = "C";
-    });
-}
+    input.textContent = " ";
+});
+nine.addEventListener("click", function() {
+    input.textContent = "9" ;
+
+});
+eight.addEventListener("click", function() {
+    input.textContent = "8" ;
+});
+seven.addEventListener("click", function() {
+    input.textContent = "7";
+});
+six.addEventListener("click", function() {
+    input.textContent = "6";
+});
+five.addEventListener("click", function() {
+    input.textContent = "5";
+});
+four.addEventListener("click", function() {
+    input.textContent = "4";
+});
+three.addEventListener("click", function() {
+    input.textContent = "3";
+});
+two.addEventListener("click", function() {
+    input.textContent = "2";
+});
+one.addEventListener("click", function() {
+    input.textContent = "1";
+});
+zero.addEventListener("click", function() {
+    input.textContent = "0";
+});
+dot.addEventListener("click", function() {
+    input.textContent = ".";
+});
 
 console.log(add(2, 2));
 console.log(subtract(2, 2));
