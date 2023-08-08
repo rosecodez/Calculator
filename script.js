@@ -12,6 +12,15 @@ const one = document.getElementById("one");
 const zero = document.getElementById("zero");
 const hash = document.getElementById("hash");
 const dot = document.getElementById("dot");
+const input = document.getElementById("input")
+const buttons = document.querySelectorAll("button");
+
+
+// Function for displaying input
+const display = " ";
+
+
+
 
 // Functions for basic math operators
 
@@ -33,43 +42,6 @@ function divide (a, b) {
 }
 
 
-C.addEventListener("click", function() {
-    input.textContent = " ";
-});
-nine.addEventListener("click", function() {
-    input.textContent = "9" ;
-
-});
-eight.addEventListener("click", function() {
-    input.textContent = "8" ;
-});
-seven.addEventListener("click", function() {
-    input.textContent = "7";
-});
-six.addEventListener("click", function() {
-    input.textContent = "6";
-});
-five.addEventListener("click", function() {
-    input.textContent = "5";
-});
-four.addEventListener("click", function() {
-    input.textContent = "4";
-});
-three.addEventListener("click", function() {
-    input.textContent = "3";
-});
-two.addEventListener("click", function() {
-    input.textContent = "2";
-});
-one.addEventListener("click", function() {
-    input.textContent = "1";
-});
-zero.addEventListener("click", function() {
-    input.textContent = "0";
-});
-dot.addEventListener("click", function() {
-    input.textContent = ".";
-});
 
 console.log(add(2, 2));
 console.log(subtract(2, 2));
