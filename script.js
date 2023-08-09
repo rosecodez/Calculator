@@ -13,13 +13,19 @@ const zero = document.getElementById("zero");
 const hash = document.getElementById("hash");
 const dot = document.getElementById("dot");
 const input = document.getElementById("input")
-const buttons = document.querySelectorAll("button");
+const numbers = document.querySelector(".numbers");
 
 
 // Function for displaying input
-const display = " ";
-
-
+function displayValue() {
+    numbers.addEventListener('click', ({ target }) => {
+        if (!target.hasAttribute('id')) {
+        return;
+        }
+        input.textContent += target.id;
+    });
+}
+displayValue()
 
 
 // Functions for basic math operators

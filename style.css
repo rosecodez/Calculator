@@ -30,7 +30,7 @@ body {
     padding: 10px;
     height: 100px;
 }
-#bottom {
+.bottom {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
