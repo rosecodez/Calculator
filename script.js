@@ -1,6 +1,6 @@
 // Access elements with DOM
 //numbers
-document.getElementById("C").value;
+document.getElementById("C");
 const nine = document.getElementById("nine").value;
 const eight = document.getElementById("eight").value;
 const seven = document.getElementById("seven").value;
@@ -13,8 +13,9 @@ const one = document.getElementById("one").value;
 const zero = document.getElementById("zero").value;
 const dot = document.getElementById("dot");
 const numbers = document.getElementById("numbers");
-const operators = document.querySelector(".operators");
+const operators = document.querySelector("#operators");
 let input = document.getElementById("input");
+const equal = document.getElementById("equal");
 
 // Transform strings into numbers
 function transformStrings() {
@@ -30,22 +31,31 @@ function transformStrings() {
     Number("0");
     Number(".");
 }
+// Declare variables for operation
+let firstNumber = " ";
+let operator = " ";
+let secondNumber = " ";
+
 // Function for displaying input
-function displayValue() {
-    numbers.addEventListener('click', ({ target }) => {
-        if (!target.hasAttribute('value')) {
-        return;
-        }
-        input.textContent += target.value;
-    });
-    operators.addEventListener('click', ({ target }) => {
+function displayNumbers() {
+    numbers.addEventListener('click', ({ target })  => {
         if (!target.hasAttribute('value')) {
         return;
         }
         input.textContent += target.value;
     });
 }
-displayValue();
+displayNumbers();
+
+function displayOperator() {
+    operators.addEventListener('click', ({ target }) => { 
+        if (!target.hasAttribute('value')) {
+        return;
+        }
+        input.textContent += target.value;
+    });
+}
+displayOperator();
 
 // Function to reset input
 function resetInput() {
@@ -72,11 +82,6 @@ function divide (a, b) {
     return a / b;
 }
 
-
-// Declare variables for operation
-let firstNumber = " ";
-let operator = " ";
-let secondNumber = " ";
 
 // Create function to operate
 function operate (firstNumber, operator, secondNumber) {
