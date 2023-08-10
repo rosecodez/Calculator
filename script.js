@@ -1,20 +1,20 @@
 // Access elements with DOM
-const C = document.getElementById("C");
-const nine = document.getElementById("nine");
-const eight = document.getElementById("eight");
-const seven = document.getElementById("seven");
-const six = document.getElementById("six");
-const five = document.getElementById("five");
-const four = document.getElementById("four");
-const three = document.getElementById("three");
-const two = document.getElementById("two");
-const one = document.getElementById("one");
-const zero = document.getElementById("zero");
-const hash = document.getElementById("hash");
+//numbers
+const C = document.querySelector(".C");
+const nine = document.getElementById("9");
+const eight = document.getElementById("8");
+const seven = document.getElementById("7");
+const six = document.getElementById("6");
+const five = document.getElementById("5");
+const four = document.getElementById("4");
+const three = document.getElementById("3");
+const two = document.getElementById("2");
+const one = document.getElementById("1");
+const zero = document.getElementById("0");
 const dot = document.getElementById("dot");
-const input = document.getElementById("input")
 const numbers = document.querySelector(".numbers");
-
+const operators = document.querySelector(".operators");
+let input = document.getElementById("input");
 
 // Function for displaying input
 function displayValue() {
@@ -24,9 +24,21 @@ function displayValue() {
         }
         input.textContent += target.id;
     });
-}
-displayValue()
+    operators.addEventListener('click', ({ target }) => {
+        if (!target.hasAttribute('id')) {
+        return;
+        }
+        input.textContent += target.id;
+    });
 
+}
+displayValue();
+
+// Function to reset input
+function resetInput() {
+    input.textContent = " ";
+}
+C.addEventListener('click', resetInput);
 
 // Functions for basic math operators
 
@@ -47,12 +59,6 @@ function divide (a, b) {
     return a / b;
 }
 
-
-
-console.log(add(2, 2));
-console.log(subtract(2, 2));
-console.log(multiply(2, 2));
-console.log(divide(2, 2));
 
 // Declare variables for operation
 let firstNumber = " ";
