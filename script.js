@@ -1,36 +1,49 @@
 // Access elements with DOM
 //numbers
-const C = document.querySelector(".C");
-const nine = document.getElementById("9");
-const eight = document.getElementById("8");
-const seven = document.getElementById("7");
-const six = document.getElementById("6");
-const five = document.getElementById("5");
-const four = document.getElementById("4");
-const three = document.getElementById("3");
-const two = document.getElementById("2");
-const one = document.getElementById("1");
-const zero = document.getElementById("0");
+document.getElementById("C").value;
+const nine = document.getElementById("nine").value;
+const eight = document.getElementById("eight").value;
+const seven = document.getElementById("seven").value;
+const six = document.getElementById("six").value;
+const five = document.getElementById("five").value;
+const four = document.getElementById("four").value;
+const three = document.getElementById("three").value;
+const two = document.getElementById("two").value;
+const one = document.getElementById("one").value;
+const zero = document.getElementById("zero").value;
 const dot = document.getElementById("dot");
-const numbers = document.querySelector(".numbers");
+const numbers = document.getElementById("numbers");
 const operators = document.querySelector(".operators");
 let input = document.getElementById("input");
 
+// Transform strings into numbers
+function transformStrings() {
+    Number("9");
+    Number("8");
+    Number("7");
+    Number("6");
+    Number("5");
+    Number("4");
+    Number("3");
+    Number("2");
+    Number("1");
+    Number("0");
+    Number(".");
+}
 // Function for displaying input
 function displayValue() {
     numbers.addEventListener('click', ({ target }) => {
-        if (!target.hasAttribute('id')) {
+        if (!target.hasAttribute('value')) {
         return;
         }
-        input.textContent += target.id;
+        input.textContent += target.value;
     });
     operators.addEventListener('click', ({ target }) => {
-        if (!target.hasAttribute('id')) {
+        if (!target.hasAttribute('value')) {
         return;
         }
-        input.textContent += target.id;
+        input.textContent += target.value;
     });
-
 }
 displayValue();
 
