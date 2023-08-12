@@ -14,9 +14,14 @@ const zero = document.getElementById("zero").value;
 const dot = document.getElementById("dot");
 const numbers = document.getElementById("numbers");
 const operators = document.querySelector("#operators");
-let input = document.getElementById("input");
+const input = document.getElementById("input");
 const equal = document.getElementById("equal");
+let result = document.getElementById("result");
 
+// Declare variables for numbers and operator
+let firstNumber = 0;
+let operator;
+let secondNumber = 0;
 // Transform strings into numbers
 function transformStrings() {
     Number("9");
@@ -30,11 +35,8 @@ function transformStrings() {
     Number("1");
     Number("0");
     Number(".");
+    Number("result");
 }
-// Declare variables for operation
-let firstNumber = " ";
-let operator = " ";
-let secondNumber = " ";
 
 // Function for displaying input
 function displayNumbers() {
@@ -46,16 +48,21 @@ function displayNumbers() {
     });
 }
 displayNumbers();
-
 function displayOperator() {
     operators.addEventListener('click', ({ target }) => { 
         if (!target.hasAttribute('value')) {
         return;
         }
         input.textContent += target.value;
-    });
+    },{once:true});
 }
 displayOperator();
+
+equal.addEventListener('click', () => { 
+    result.textContent = operate(firstNumber, operator, secondNumber);
+});
+
+
 
 // Function to reset input
 function resetInput() {
@@ -84,7 +91,7 @@ function divide (a, b) {
 
 
 // Create function to operate
-function operate (firstNumber, operator, secondNumber) {
+function operate(firstNumber, operator, secondNumber) {
     switch (operator) {
         case "+":
         return add(a, b);
