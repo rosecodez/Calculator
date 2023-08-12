@@ -1,27 +1,17 @@
 // Access elements with DOM
 //numbers
 document.getElementById("C");
-const nine = document.getElementById("nine").value;
-const eight = document.getElementById("eight").value;
-const seven = document.getElementById("seven").value;
-const six = document.getElementById("six").value;
-const five = document.getElementById("five").value;
-const four = document.getElementById("four").value;
-const three = document.getElementById("three").value;
-const two = document.getElementById("two").value;
-const one = document.getElementById("one").value;
-const zero = document.getElementById("zero").value;
-const dot = document.getElementById("dot");
-const numbers = document.getElementById("numbers");
-const operators = document.querySelector("#operators");
+const numbers = document.querySelector(".numbers");
+const operators = document.querySelector(".operators");
 const input = document.getElementById("input");
 const equal = document.getElementById("equal");
 let result = document.getElementById("result");
 
 // Declare variables for numbers and operator
 let firstNumber = 0;
-let operator;
+let operator = "";
 let secondNumber = 0;
+
 // Transform strings into numbers
 function transformStrings() {
     Number("9");
@@ -35,7 +25,6 @@ function transformStrings() {
     Number("1");
     Number("0");
     Number(".");
-    Number("result");
 }
 
 // Function for displaying input
@@ -45,64 +34,69 @@ function displayNumbers() {
         return;
         }
         input.textContent += target.value;
+
     });
 }
 displayNumbers();
+
+// Function for displaying operator
 function displayOperator() {
     operators.addEventListener('click', ({ target }) => { 
         if (!target.hasAttribute('value')) {
         return;
         }
         input.textContent += target.value;
-    },{once:true});
+        operator = target.value;
+    });
 }
 displayOperator();
 
-equal.addEventListener('click', () => { 
-    result.textContent = operate(firstNumber, operator, secondNumber);
-});
+// event listener for when equal is pressed to show up the result
+equal.addEventListener("click", function() {
+    result.innerText = operate();
+})
 
 
-
-// Function to reset input
+// Function to reset the calculator
 function resetInput() {
     input.textContent = " ";
+    result.textContent = " ";
 }
 C.addEventListener('click', resetInput);
 
 // Functions for basic math operators
 
 // add
-function add(a, b) {
-    return a + b;
+function add() {
+    return firstNumber + secondNumber;
 }
-// substract 
-function subtract (a, b) {
-    return a - b;
+// subtract 
+function subtract () {
+    return firstNumber - secondNumber;
 }
 // multiply 
-function multiply (a, b) {
-    return a * b;
+function multiply () {
+    return firstNumber * secondNumber;
 }
 //divide 
-function divide (a, b) {
-    return a / b;
+function divide () {
+    return firstNumber / secondNumber;
 }
 
 
 // Create function to operate
-function operate(firstNumber, operator, secondNumber) {
+function operate () {
     switch (operator) {
-        case "+":
-        return add(a, b);
+        case "add":
+        return add();
 
-        case "-":
-        return subtract (a, b);
+        case "subtract":
+        return subtract ();
 
-        case "*":
-        return multiply (a, b);
+        case "multiply":
+        return multiply ();
 
-        case "/":
-        return divide (a, b);
+        case "divide":
+        return divide ();
     }
 }
