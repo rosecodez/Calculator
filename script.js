@@ -7,96 +7,102 @@ const input = document.getElementById("input");
 const equal = document.getElementById("equal");
 let result = document.getElementById("result");
 
-// Declare variables for numbers and operator
-let firstNumber = 0;
+// Declare operator
 let operator = "";
-let secondNumber = 0;
 
 // Transform strings into numbers
 function transformStrings() {
-    Number("9");
-    Number("8");
-    Number("7");
-    Number("6");
-    Number("5");
-    Number("4");
-    Number("3");
-    Number("2");
-    Number("1");
-    Number("0");
-    Number(".");
+  Number("9");
+  Number("8");
+  Number("7");
+  Number("6");
+  Number("5");
+  Number("4");
+  Number("3");
+  Number("2");
+  Number("1");
+  Number("0");
+  Number(".");
 }
 
+let splitNumbers = []; 
 // Function for displaying input
 function displayNumbers() {
-    numbers.addEventListener('click', ({ target })  => {
-        if (!target.hasAttribute('value')) {
-        return;
-        }
-        input.textContent += target.value;
-
-    });
+  numbers.addEventListener('click', ({ target }) => {
+    if (!target.hasAttribute('value')) {
+      return;
+    }
+    input.textContent += target.value;
+    numberString = input.textContent;
+    console.log("Number String " + numberString);
+    splitNumbers = numberString.split(" "); 
+    console.log(splitNumbers);
+  });
 }
 displayNumbers();
 
 // Function for displaying operator
 function displayOperator() {
-    operators.addEventListener('click', ({ target }) => { 
-        if (!target.hasAttribute('value')) {
-        return;
-        }
-        input.textContent += target.value;
-        operator = target.value;
-    });
+  operators.addEventListener('click', ({ target }) => {
+    if (!target.hasAttribute('value')) {
+      return;
+    }
+    input.textContent += " " + target.value + " ";
+    operator = target.value; 
+  });
 }
 displayOperator();
 
 // event listener for when equal is pressed to show up the result
 equal.addEventListener("click", function() {
-    result.innerText = operate();
+  let firstNumber = Number(splitNumbers[0]);
+  let secondNumber = Number(splitNumbers[2]);
+  let op = splitNumbers[1];
+  let final = operate(firstNumber, secondNumber, op);
+  result.textContent = final;
+  console.log(firstNumber + secondNumber)
 })
 
 
 // Function to reset the calculator
 function resetInput() {
-    input.textContent = " ";
-    result.textContent = " ";
+  input.textContent = " ";
+  result.textContent = " ";
 }
 C.addEventListener('click', resetInput);
 
 // Functions for basic math operators
 
 // add
-function add() {
-    return firstNumber + secondNumber;
+function add(firstNumber, secondNumber) {
+  return firstNumber + secondNumber; //0+0
 }
 // subtract 
-function subtract () {
-    return firstNumber - secondNumber;
+function subtract(firstNumber, secondNumber) {
+  return firstNumber - secondNumber; //0 - 0
 }
 // multiply 
-function multiply () {
-    return firstNumber * secondNumber;
+function multiply(firstNumber, secondNumber) {
+  return firstNumber * secondNumber;
 }
 //divide 
-function divide () {
-    return firstNumber / secondNumber;
+function divide(firstNumber, secondNumber) {
+  return firstNumber / secondNumber;
 }
 
 
 // Create function to operate
-function operate () {
-    switch (operator) {
-        case "add":
-        return add();
-
-        case "subtract":
-        return subtract ();
-
-        case "multiply":
-        return multiply ();
-
-        case "divide":
-        return divide ();
-    }
+function operate(firstNumber, secondNumber, operation) {
+  if(operation == "+"){
+    return add(firstNumber, secondNumber);
+  }
+  else if(operation == "-"){
+    return subtract(firstNumber, secondNumber);
+  }
+  else if(operation == "*"){
+    return multiply(firstNumber, secondNumber);
+  }
+  else if(operation == "/"){
+    return divide(firstNumber, secondNumber);
+  }
 }
