@@ -60,14 +60,13 @@ equal.addEventListener("click", function() {
   let op = splitNumbers[1];
   let final = operate(firstNumber, secondNumber, op);
   result.textContent = final;
-  console.log(firstNumber + secondNumber)
+  console.log(firstNumber + secondNumber);
 })
 
 
 // Function to reset the calculator
 function resetInput() {
-  input.textContent = " ";
-  result.textContent = " ";
+  window.location.reload();
 }
 C.addEventListener('click', resetInput);
 
@@ -75,11 +74,11 @@ C.addEventListener('click', resetInput);
 
 // add
 function add(firstNumber, secondNumber) {
-  return firstNumber + secondNumber; //0+0
+  return firstNumber + secondNumber; 
 }
 // subtract 
 function subtract(firstNumber, secondNumber) {
-  return firstNumber - secondNumber; //0 - 0
+  return firstNumber - secondNumber; 
 }
 // multiply 
 function multiply(firstNumber, secondNumber) {
@@ -91,7 +90,7 @@ function divide(firstNumber, secondNumber) {
 }
 
 
-// Create function to operate
+// Function to operate
 function operate(firstNumber, secondNumber, operation) {
   if(operation == "+"){
     return add(firstNumber, secondNumber);
