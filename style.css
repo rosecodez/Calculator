@@ -28,7 +28,7 @@ body {
     align-items: flex-end;
     gap: 10px;
     padding: 10px;
-    height: 100px;
+    height: 127px;
 }
 #bottom {
     display: flex;
@@ -61,4 +61,7 @@ input {
 #top, #bottom {
     border: inset;
     border-radius: 30px;
+}
+#divide, #multiply, #subtract, #add, #equal {
+    background-color: orange;
 }
