@@ -16,7 +16,7 @@ body {
 #sub-container {
     border: inset;
     border-radius: 30px;
-    width: 258px;
+    width: 324px;
     padding: 10px;
     gap: 17px;
     display: flex;
@@ -36,7 +36,7 @@ body {
     justify-content: space-between;
     padding: 10px;
     align-self: center;
-    gap: 4px;
+    gap: 10px;
 }
 button {
     border-radius: 30px;

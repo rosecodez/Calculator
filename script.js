@@ -7,7 +7,7 @@ const input = document.getElementById("input");
 const equal = document.getElementById("equal");
 let result = document.getElementById("result");
 
-// Declare operator
+// operator
 let operator = "";
 
 // Transform strings into numbers
@@ -26,7 +26,7 @@ function transformStrings() {
 }
 
 let splitNumbers = []; 
-// Function for displaying input
+// Function for displaying numbers
 function displayNumbers() {
   numbers.addEventListener('click', ({ target }) => {
     if (!target.hasAttribute('value')) {
@@ -36,7 +36,7 @@ function displayNumbers() {
     numberString = input.textContent;
     console.log("Number String " + numberString);
     splitNumbers = numberString.split(" "); 
-    console.log(splitNumbers);
+    console.log("Split Array: " + splitNumbers);
   });
 }
 displayNumbers();
@@ -50,19 +50,52 @@ function displayOperator() {
     input.textContent += " " + target.value + " ";
     operator = target.value; 
   });
+  
+  
 }
 displayOperator();
 
 // event listener for when equal is pressed to show up the result
 equal.addEventListener("click", function() {
-  let firstNumber = Number(splitNumbers[0]);
-  let secondNumber = Number(splitNumbers[2]);
-  let op = splitNumbers[1];
-  let final = operate(firstNumber, secondNumber, op);
-  result.textContent = final;
-  console.log(firstNumber + secondNumber);
+  // let firstNumber = Number(splitNumbers[0]);
+  // let secondNumber = Number(splitNumbers[2]);
+  // let op = splitNumbers[1];
+  let numbersArray = [];
+  let operatorArray = [];
+  let j = 0;
+  let k = 0;
+  for(let i = 0; i < splitNumbers.length; i++){
+    //if we are at an even index (a number)
+    if(i % 2 == 0){
+      //convert number from string -> number
+      splitNumbers[i] = Number(splitNumbers[i]);
+      //push number from splitNumber array into new array
+      numbersArray[j] = splitNumbers[i];
+      j++;
+    }
+    else if(i % 2 == 1){
+      operatorArray[k] = splitNumbers[i];
+      k++;
+    }
+  }
+  let num1 = numbersArray[0]; //first number
+  let num2 = 0;
+  let previousResult;
+  for(let i = 0; i < numbersArray.length-1; i++){
+    num2 = numbersArray[i + 1]; //second number in the numbersArray
+    previousResult = operate(num1, num2, operatorArray[i]);
+    if(num1 || num2 == 0 && operatorArray[i] == "/"){
+      alert("You cannot divide by 0")
+    }
+    num1 = previousResult;
+    resetInput();
+  }
+  console.log(previousResult);  
+  console.log(operatorArray);
+  console.log(numbersArray);
+  input.textContent = previousResult;
+  let final = previousResult;
 })
-
 
 // Function to reset the calculator
 function resetInput() {
