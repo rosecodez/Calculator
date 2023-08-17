@@ -84,11 +84,12 @@ equal.addEventListener("click", function() {
   for(let i = 0; i < numbersArray.length-1; i++){
     num2 = numbersArray[i + 1]; //second number in the numbersArray
     previousResult = operate(num1, num2, operatorArray[i]);
-    if(num1 || num2 == 0 && operatorArray[i] == "/"){
-      alert("You cannot divide by 0")
+    if(num1, num2 == 0 && operatorArray[i] == "/"){
+      alert("You cannot divide by 0");
+      resetInput();
     }
     num1 = previousResult;
-    resetInput();
+    
   }
   console.log(previousResult);  
   console.log(operatorArray);
