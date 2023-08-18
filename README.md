@@ -16,4 +16,4 @@ This project was a great way of learning to work with numbers. I had to convert 
 ✔️Display a snarky `error message` if the user tries to `divide` by 0… and don’t let it crash your calculator!
 -Add a `. button` and let users `input` decimals! Make sure you don’t let them type more than one though: 12.3.56.5. It is hard to do math on these numbers. (disable the decimal button if there’s already one in the display)
 -Add a “backspace” button, so the user can undo if they click the wrong number.
--Add keyboard support! You might run into an issue where keys such as (/) might cause you some trouble.
+✔️Add keyboard support! You might run into an issue where keys such as (/) might cause you some trouble.

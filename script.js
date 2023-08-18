@@ -6,7 +6,7 @@ const operators = document.querySelector(".operators");
 const input = document.getElementById("input");
 const equal = document.getElementById("equal");
 let result = document.getElementById("result");
-
+const backspace = document.getElementById("backspace");
 // operator
 let operator = "";
 
@@ -50,16 +50,11 @@ function displayOperator() {
     input.textContent += " " + target.value + " ";
     operator = target.value; 
   });
-  
-  
 }
 displayOperator();
 
 // event listener for when equal is pressed to show up the result
 equal.addEventListener("click", function() {
-  // let firstNumber = Number(splitNumbers[0]);
-  // let secondNumber = Number(splitNumbers[2]);
-  // let op = splitNumbers[1];
   let numbersArray = [];
   let operatorArray = [];
   let j = 0;
@@ -80,22 +75,43 @@ equal.addEventListener("click", function() {
   }
   let num1 = numbersArray[0]; //first number
   let num2 = 0;
-  let previousResult;
   for(let i = 0; i < numbersArray.length-1; i++){
     num2 = numbersArray[i + 1]; //second number in the numbersArray
     previousResult = operate(num1, num2, operatorArray[i]);
+    num1 = previousResult;
     if(num1, num2 == 0 && operatorArray[i] == "/"){
       alert("You cannot divide by 0");
       resetInput();
     }
-    num1 = previousResult;
-    
   }
-  console.log(previousResult);  
-  console.log(operatorArray);
-  console.log(numbersArray);
+  //console.log(previousResult);  
+  //console.log(numbersArray);
   input.textContent = previousResult;
   let final = previousResult;
+})
+
+let string = '';
+// let Delete = document.getElementsByClassName('del');
+let screen = document.getElementById('screen');
+let buttons = document.querySelectorAll('.button');
+
+Array.from(buttons).forEach((button) => {
+  button.addEventListener('click', (e) => {
+    if (e.target.innerHTML == '=') {
+      string = eval(string);
+      document.querySelector('input').value = string;
+    } else if (e.target.innerHTML == 'C') {
+      string = "";
+      document.querySelector('input').value = string;
+    } else if (e.target.innerHTML == 'Del') {
+      string = string.slice(0, -1);
+      document.querySelector('input').value = string;
+    } else {
+      console.log(e.target)
+      string = string + e.target.innerHTML;
+      document.querySelector('input').value = string;
+    }
+  })
 })
 
 // Function to reset the calculator
@@ -122,7 +138,6 @@ function multiply(firstNumber, secondNumber) {
 function divide(firstNumber, secondNumber) {
   return firstNumber / secondNumber;
 }
-
 
 // Function to operate
 function operate(firstNumber, secondNumber, operation) {
