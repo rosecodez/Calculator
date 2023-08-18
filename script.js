@@ -41,7 +41,6 @@ function displayNumbers() {
     backspace.addEventListener('click', function()  {
       splitNumbers = splitNumbers.slice(0, - 1);
       input.textContent = splitNumbers;
-      
     });
 
   });
