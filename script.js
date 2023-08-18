@@ -10,6 +10,7 @@ const backspace = document.getElementById("backspace");
 // operator
 let operator = "";
 
+
 // Transform strings into numbers
 function transformStrings() {
   Number("9");
@@ -36,7 +37,13 @@ function displayNumbers() {
     numberString = input.textContent;
     console.log("Number String " + numberString);
     splitNumbers = numberString.split(" "); 
-    console.log("Split Array: " + splitNumbers);
+    console.log("Split Numbers: " + splitNumbers);   
+    backspace.addEventListener('click', function()  {
+      splitNumbers = splitNumbers.slice(0, - 1);
+      input.textContent = splitNumbers;
+      
+    });
+
   });
 }
 displayNumbers();
@@ -84,35 +91,13 @@ equal.addEventListener("click", function() {
       resetInput();
     }
   }
-  //console.log(previousResult);  
-  //console.log(numbersArray);
+  console.log("previousResult: " + previousResult);  
+  console.log("numbersArray: " + numbersArray);
   input.textContent = previousResult;
   let final = previousResult;
 })
 
-let string = '';
-// let Delete = document.getElementsByClassName('del');
-let screen = document.getElementById('screen');
-let buttons = document.querySelectorAll('.button');
 
-Array.from(buttons).forEach((button) => {
-  button.addEventListener('click', (e) => {
-    if (e.target.innerHTML == '=') {
-      string = eval(string);
-      document.querySelector('input').value = string;
-    } else if (e.target.innerHTML == 'C') {
-      string = "";
-      document.querySelector('input').value = string;
-    } else if (e.target.innerHTML == 'Del') {
-      string = string.slice(0, -1);
-      document.querySelector('input').value = string;
-    } else {
-      console.log(e.target)
-      string = string + e.target.innerHTML;
-      document.querySelector('input').value = string;
-    }
-  })
-})
 
 // Function to reset the calculator
 function resetInput() {
